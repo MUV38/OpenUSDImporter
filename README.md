@@ -1,6 +1,6 @@
 # OpenUSDImporter
-OpenUSD importer for my hobby framework.
+OpenUSD importer for my hobby project.
 
 ## Dependencies  
 - OpenUSD
-  - Tested version is v25.08  
+  - Tested with OpenUSD v25.08  
