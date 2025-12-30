@@ -1,6 +1,6 @@
 # OpenUSDImporter
 OpenUSD importer for my hobby project.
 
-## Dependencies  
+## Dependencies
 - OpenUSD
-  - Tested with OpenUSD v25.08  
+  - Tested with OpenUSD v25.08.
