@@ -17,12 +17,21 @@
     <ClInclude Include="source\pch.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="include\openusd_importer\importer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\openusd_importer\openusd_importer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\openusd_importer\usd_lib.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\openusd_importer.cpp">
+    <ClCompile Include="source\pch.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\pch.cpp">
+    <ClCompile Include="source\importer.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
