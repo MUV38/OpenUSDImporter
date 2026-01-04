@@ -1,4 +1,4 @@
-#include <openusd_importer/openusd_importer.h>
+﻿#include <openusd_importer/openusd_importer.h>
 #include <iostream>
 #include <string>
 
@@ -9,8 +9,6 @@ int main()
 	const std::string filePath = fileDir + fileName;
 
 	bool result = usd::Importer::import(filePath);
-	
-	std::cout << "Importing " << filePath << (result ? " succeeded." : " failed.") << std::endl;
 	
 	return 0;
 }
