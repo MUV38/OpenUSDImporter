@@ -1,0 +1,44 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "vs2026",
+      "displayName": "VS2026",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/vs2026",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "OpenUSD_DEBUG_ROOT": "${sourceDir}/external/OpenUSD-v26.05-debug-install",
+        "OpenUSD_RELEASE_ROOT": "${sourceDir}/external/OpenUSD-v26.05-install"
+      }
+    },
+    {
+      "name": "vs2026-debug",
+      "displayName": "VS2026 Debug",
+      "inherits": "vs2026"
+    },
+    {
+      "name": "vs2026-release",
+      "displayName": "VS2026 Release",
+      "inherits": "vs2026"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "vs2026-debug",
+      "configurePreset": "vs2026",
+      "configuration": "Debug"
+    },
+    {
+      "name": "vs2026-release",
+      "configurePreset": "vs2026",
+      "configuration": "Release"
+    }
+  ]
+}
