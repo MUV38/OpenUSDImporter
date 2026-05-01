@@ -48,6 +48,7 @@ if(WIN32)
     )
     target_compile_options(OpenUSDImporter PRIVATE /utf-8 /external:W0 /wd4273)
     set_property(TARGET OpenUSDImporter PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+    set_property(TARGET OpenUSDImporter PROPERTY VS_DEBUGGER_COMMAND_ARGUMENTS "assets/CubeMesh.usda")
     set_property(TARGET OpenUSDImporter PROPERTY
         VS_DEBUGGER_ENVIRONMENT "PATH=$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/bin>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/bin>;%PATH%"
     )

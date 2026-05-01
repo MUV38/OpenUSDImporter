@@ -32,5 +32,6 @@ cmake --build --preset vs2026-release
 Run the sample importer:
 
 ```powershell
+.\build\vs2026\Release\OpenUSDImporter.exe .\assets\CubeMesh.usda
 .\build\vs2026\Release\OpenUSDImporter.exe .\assets\HelloWorld.usda
 ```

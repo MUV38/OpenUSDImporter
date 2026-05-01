@@ -90,8 +90,12 @@ int main(int argc, char** argv)
 {
     ConfigureDefaultPluginPath();
 
-    const char* defaultAsset = "assets/HelloWorld.usda";
-    const std::string requestedAssetPath = argc > 1 ? argv[1] : defaultAsset;
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <usd-file-path>\n";
+        return 1;
+    }
+
+    const std::string requestedAssetPath = argv[1];
     const std::filesystem::path assetPath = ResolveAssetPath(requestedAssetPath);
 
     UsdStageRefPtr stage = UsdStage::Open(assetPath.string());
