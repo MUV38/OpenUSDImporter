@@ -11,7 +11,7 @@
       "displayName": "VS2026",
       "generator": "Visual Studio 18 2026",
       "architecture": "x64",
-      "binaryDir": "${sourceDir}/../build/usd-vs2026",
+      "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
         "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
         "OpenUSD_DEBUG_ROOT": "${sourceDir}/../external/OpenUSD-v26.05-debug-install",
