@@ -1,4 +1,4 @@
-# OpenUSDImporter
+# USDImporter
 OpenUSD importer for my hobby project.
 
 ## Prerequirements
@@ -21,7 +21,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup_openusd.ps1 -BuildVaria
 Configure and build this importer with Visual Studio 2026:
 
 ```powershell
-& 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\MSBuild.exe' .\OpenUSDImporter.sln /t:Build /p:Configuration=Release /p:Platform=x64
+& 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\MSBuild.exe' .\USDImporter.sln /t:Build /p:Configuration=Release /p:Platform=x64
 ```
 
 Configure the OpenUSD CMake interface target if you need it from another CMake project:
@@ -33,6 +33,6 @@ cmake --preset vs2026 -S .\usd
 Run the sample importer:
 
 ```powershell
-.\bin\x64\Release\OpenUSDImporter.exe .\assets\CubeMesh.usda
-.\bin\x64\Release\OpenUSDImporter.exe .\assets\HelloWorld.usda
+.\bin\x64\Release\USDImporter.exe .\assets\CubeMesh.usda
+.\bin\x64\Release\USDImporter.exe .\assets\HelloWorld.usda
 ```

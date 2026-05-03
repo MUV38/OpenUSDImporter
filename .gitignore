@@ -6,6 +6,8 @@
 /bin
 /obj/
 /build/
+/usd/build/
+/usd/lib/
 /external/OpenUSD-v*/
 /external/OpenUSD-*-build/
 /external/OpenUSD-*-deps-src/

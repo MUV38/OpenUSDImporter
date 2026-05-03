@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <filesystem>
 #include <string>
 
@@ -55,7 +55,7 @@ std::filesystem::path ResolveAssetPath(const std::string& inputPath)
     }
 
     const std::filesystem::path sourceRelativePath =
-        std::filesystem::path(OPENUSD_IMPORTER_SOURCE_DIR) / requestedPath;
+        std::filesystem::path(USD_IMPORTER_SOURCE_DIR) / requestedPath;
     if (std::filesystem::exists(sourceRelativePath)) {
         return sourceRelativePath;
     }
