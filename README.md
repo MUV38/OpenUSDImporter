@@ -21,17 +21,18 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup_openusd.ps1 -BuildVaria
 Configure and build this importer with Visual Studio 2026:
 
 ```powershell
-cmake --preset vs2026
-cmake --preset vs2026-debug
-cmake --build --preset vs2026-debug
+& 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\MSBuild.exe' .\OpenUSDImporter.sln /t:Build /p:Configuration=Release /p:Platform=x64
+```
 
-cmake --preset vs2026-release
-cmake --build --preset vs2026-release
+Configure the OpenUSD CMake interface target if you need it from another CMake project:
+
+```powershell
+cmake --preset vs2026 -S .\usd
 ```
 
 Run the sample importer:
 
 ```powershell
-.\build\vs2026\Release\OpenUSDImporter.exe .\assets\CubeMesh.usda
-.\build\vs2026\Release\OpenUSDImporter.exe .\assets\HelloWorld.usda
+.\bin\x64\Release\OpenUSDImporter.exe .\assets\CubeMesh.usda
+.\bin\x64\Release\OpenUSDImporter.exe .\assets\HelloWorld.usda
 ```

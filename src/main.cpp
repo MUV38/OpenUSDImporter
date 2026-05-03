@@ -2,10 +2,7 @@
 #include <filesystem>
 #include <string>
 
-#include <pxr/base/tf/token.h>
-#include <pxr/usd/usd/prim.h>
-#include <pxr/usd/usd/primRange.h>
-#include <pxr/usd/usd/stage.h>
+#include "usd.h"
 
 #if defined(_WIN32)
 #include <Windows.h>
@@ -50,20 +47,6 @@ void ConfigureDefaultPluginPath()
 #endif
 }
 
-void PrintPrimTree(const UsdStageRefPtr& stage)
-{
-    for (const UsdPrim& prim : stage->Traverse()) {
-        const std::string path = prim.GetPath().GetString();
-        const TfToken typeName = prim.GetTypeName();
-
-        std::cout << path;
-        if (!typeName.IsEmpty()) {
-            std::cout << " [" << typeName.GetString() << "]";
-        }
-        std::cout << '\n';
-    }
-}
-
 std::filesystem::path ResolveAssetPath(const std::string& inputPath)
 {
     const std::filesystem::path requestedPath(inputPath);
@@ -83,6 +66,20 @@ std::filesystem::path ResolveAssetPath(const std::string& inputPath)
     }
 
     return requestedPath;
+}
+
+void PrintPrimTree(const UsdStageRefPtr& stage)
+{
+    for (const UsdPrim& prim : stage->Traverse()) {
+        const std::string path = prim.GetPath().GetString();
+        const TfToken typeName = prim.GetTypeName();
+
+        std::cout << path;
+        if (!typeName.IsEmpty()) {
+            std::cout << " [" << typeName.GetString() << "]";
+        }
+        std::cout << '\n';
+    }
 }
 }
 
