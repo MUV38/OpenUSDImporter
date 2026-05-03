@@ -35,34 +35,29 @@ target_link_libraries(OpenUSDImporter PRIVATE
     "$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/lib/tbb_debug.lib>"
     "$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/lib/usd_ms.lib>"
     "$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/lib/tbb.lib>"
-    Ws2_32.lib
-    Dbghelp.lib
-    Shlwapi.lib
 )
 
-if(WIN32)
-    target_compile_definitions(OpenUSDImporter PRIVATE
-        NOMINMAX
-        WIN32_LEAN_AND_MEAN
-        TBB_SUPPRESS_DEPRECATED_MESSAGES=1
-    )
-    target_compile_options(OpenUSDImporter PRIVATE /utf-8 /external:W0 /wd4273)
-    set_property(TARGET OpenUSDImporter PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
-    set_property(TARGET OpenUSDImporter PROPERTY VS_DEBUGGER_COMMAND_ARGUMENTS "assets/CubeMesh.usda")
-    set_property(TARGET OpenUSDImporter PROPERTY
-        VS_DEBUGGER_ENVIRONMENT "PATH=$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/bin>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/bin>;%PATH%"
-    )
+target_compile_definitions(OpenUSDImporter PRIVATE
+    NOMINMAX
+    WIN32_LEAN_AND_MEAN
+    TBB_SUPPRESS_DEPRECATED_MESSAGES=1
+)
+target_compile_options(OpenUSDImporter PRIVATE /utf-8 /external:W0 /wd4273)
+set_property(TARGET OpenUSDImporter PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TARGET OpenUSDImporter PROPERTY VS_DEBUGGER_COMMAND_ARGUMENTS "assets/CubeMesh.usda")
+set_property(TARGET OpenUSDImporter PROPERTY
+    VS_DEBUGGER_ENVIRONMENT "PATH=$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/bin>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/bin>;%PATH%"
+)
 
-    add_custom_command(TARGET OpenUSDImporter POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-                "$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/bin>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/bin>"
-                "$<TARGET_FILE_DIR:OpenUSDImporter>"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                "$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/lib/usd_ms.dll>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/lib/usd_ms.dll>"
-                "$<TARGET_FILE_DIR:OpenUSDImporter>"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-                "$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/lib/usd>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/lib/usd>"
-                "$<TARGET_FILE_DIR:OpenUSDImporter>/usd"
-        COMMENT "Copying OpenUSD runtime files"
-    )
-endif()
+add_custom_command(TARGET OpenUSDImporter POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/bin>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/bin>"
+            "$<TARGET_FILE_DIR:OpenUSDImporter>"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/lib/usd_ms.dll>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/lib/usd_ms.dll>"
+            "$<TARGET_FILE_DIR:OpenUSDImporter>"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "$<$<CONFIG:Debug>:${OpenUSD_DEBUG_ROOT}/lib/usd>$<$<NOT:$<CONFIG:Debug>>:${OpenUSD_RELEASE_ROOT}/lib/usd>"
+            "$<TARGET_FILE_DIR:OpenUSDImporter>/usd"
+    COMMENT "Copying OpenUSD runtime files"
+)
