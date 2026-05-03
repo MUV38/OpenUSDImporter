@@ -18,17 +18,28 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup_openusd.ps1
 powershell -ExecutionPolicy Bypass -File .\scripts\setup_openusd.ps1 -BuildVariant debug
 ```
 
-Configure and build this importer with Visual Studio 2026:
+Configure and build the USD wrapper library:
 
 ```powershell
-& 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\MSBuild.exe' .\USDImporter.sln /t:Build /p:Configuration=Release /p:Platform=x64
+Push-Location .\usd
+cmake --preset vs2026
+cmake --build --preset vs2026-release
+Pop-Location
 ```
 
-Configure the OpenUSD CMake interface target if you need it from another CMake project:
+Build this importer with Visual Studio 2026:
+
+Open `USDImporter.sln`, select `Release|x64`, and build the solution.
+
+Build the Debug configuration:
 
 ```powershell
-cmake --preset vs2026 -S .\usd
+Push-Location .\usd
+cmake --build --preset vs2026-debug
+Pop-Location
 ```
+
+Open `USDImporter.sln`, select `Debug|x64`, and build the solution.
 
 Run the sample importer:
 
