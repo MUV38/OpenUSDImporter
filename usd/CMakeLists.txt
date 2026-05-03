@@ -19,8 +19,14 @@ add_library(usd STATIC
     src/usd.cpp
 )
 
+if(CMAKE_VS_PLATFORM_NAME)
+    set(USD_OUTPUT_PLATFORM "${CMAKE_VS_PLATFORM_NAME}")
+else()
+    set(USD_OUTPUT_PLATFORM "${CMAKE_SYSTEM_PROCESSOR}")
+endif()
+
 set_target_properties(usd PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/$<CONFIG>"
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/${USD_OUTPUT_PLATFORM}/$<CONFIG>"
 )
 
 target_compile_features(usd PUBLIC cxx_std_17)

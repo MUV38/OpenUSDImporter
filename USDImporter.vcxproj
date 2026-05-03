@@ -108,12 +108,6 @@ xcopy /E /I /Y "$(SolutionDir)usd\lib\$(Platform)\$(Configuration)\usd" "$(OutDi
   <ItemGroup>
     <ClInclude Include="usd\include\usd.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="usd\usd.vcxproj">
-      <Project>{4D7D3B7B-09F5-4F21-B2B8-5501FCB5B8B8}</Project>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
