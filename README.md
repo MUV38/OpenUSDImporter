@@ -29,9 +29,7 @@ Pop-Location
 
 Build this importer with Visual Studio 2026:
 
-```powershell
-& 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\MSBuild.exe' .\USDImporter.sln /t:Build /p:Configuration=Release /p:Platform=x64
-```
+Open `USDImporter.sln`, select `Release|x64`, and build the solution.
 
 Build the Debug configuration:
 
@@ -39,8 +37,9 @@ Build the Debug configuration:
 Push-Location .\usd
 cmake --build --preset vs2026-debug
 Pop-Location
-& 'C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\amd64\MSBuild.exe' .\USDImporter.sln /t:Build /p:Configuration=Debug /p:Platform=x64
 ```
+
+Open `USDImporter.sln`, select `Debug|x64`, and build the solution.
 
 Run the sample importer:
 
