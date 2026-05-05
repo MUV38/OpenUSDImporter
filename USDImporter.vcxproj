@@ -104,8 +104,13 @@ xcopy /E /I /Y "$(SolutionDir)usd\lib\$(Platform)\$(Configuration)\usd" "$(OutDi
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\usdImporter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\math\matrix.h" />
+    <ClInclude Include="src\math\mat4.h" />
+    <ClInclude Include="src\math\vec3.h" />
+    <ClInclude Include="src\usdImporter.h" />
     <ClInclude Include="usd\include\usd.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
